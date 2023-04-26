@@ -1,21 +1,22 @@
 const initialState = {
-  username: '',
-  email: '',
-  password: '',
-};
+    username: '',
+    email: '',
+    password: '',
+}
+
 export const profileReducer = (state = initialState, action) => {
-    if (action.type === 'CREATE PROFILE') {
+    if (action.type === 'CREATE_PROFILE') {
         const data = action.payload
-        const newUserName = data.username
+        const newUsername = data.username
         const newEmail = data.email
         const newPassword = data.password
 
         return {
             ...state,
-            username: newUserName,
+            username: newUsername,
             email: newEmail,
             password: newPassword,
         }
     }
-  return state;
-};
+    return state
+}

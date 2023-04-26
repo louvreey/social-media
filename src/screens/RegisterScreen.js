@@ -1,20 +1,21 @@
-import {StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
+import React, { useEffect } from 'react';
 import Button from '../components/ButtonComponents';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useSelector } from 'react-redux';
+import Input from '../components/InputComponents';
 
 const RegisterScreen = (props) => {
-    const {navigation} = props;
-    const globalProfileData = useSelector(store => store.profileReducer)
-    useEffect(() => {
-        console.log(globalProfileData)
-    }, [globalProfileData])
+  const { navigation } = props;
+  const globalProfileData = useSelector(store => store.profileReducer)
+  useEffect(() => {
+    console.log(globalProfileData)
+  }, [globalProfileData])
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.mainContainer}>
         <View style={styles.inputContainer}>
-          <TextInput title="Username" placeholder="Username" />
+          <Input title="Username" />
           <TextInput title="Email" placeholder="Email" />
           <TextInput title="Password" placeholder="Password" />
         </View>

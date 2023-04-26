@@ -1,5 +1,5 @@
 export const createProfile = (value) => {
-    return{
+    return {
         type: 'CREATE PROFILE',
         payload: value
     }
