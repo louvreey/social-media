@@ -2,7 +2,8 @@ import {StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
 import React from 'react';
 import Button from '../components/ButtonComponents';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useDispatch} from 'react-redux/es/exports';
+import { useSelector } from 'react-redux'
 
 const RegisterScreen = (props) => {
     const {navigation} = props;
