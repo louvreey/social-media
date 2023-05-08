@@ -1,25 +1,46 @@
 import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '../components/ButtonComponents';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Input from '../components/InputComponents';
+import { createProfile } from '../store/actions/profileAction';
 
 const RegisterScreen = (props) => {
   const { navigation } = props;
   const globalProfileData = useSelector(store => store.profileReducer)
+  const [form, setForm] = useState({ username: '', email: '', password: '' })
+  const dispatch = useDispatch()
+  const onChangeInput = (inputType, value) => {
+    setForm({
+      //spread operator
+      ...form,
+      [inputType]: value,
+    })
+  }
+  const sendData = () => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/
+    if (form.username === '' || form.email === '' || form.password === '') {
+      alert('Mohon isikan semua kolom')
+    } else if (!emailRegex.test(form.email)) {
+      alert('Mohon isikan email dengan benar')
+    }
+    else {
+      dispatch(createProfile(form))
+    }
+  }
   useEffect(() => {
-    console.log(globalProfileData)
-  }, [globalProfileData])
+    console.log(form)
+  },)
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.mainContainer}>
         <View style={styles.inputContainer}>
-          <Input title="Username" />
-          <TextInput title="Email" placeholder="Email" />
-          <TextInput title="Password" placeholder="Password" />
+          <TextInput title="Username" placeholder="usernmae" onChangeText={(text) => onChangeInput('username', text)} />
+          <TextInput title="Email" placeholder="Email" onChangeText={(text) => onChangeInput('email', text)} />
+          <Input title="password" onChangeText={(text) => onChangeInput('password', text)} />
         </View>
-        <Button text="Register" />
+        <Button text="Register" onPress={() => sendData()} />
         <View style={styles.textContainer}>
           <Text style={styles.text}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
