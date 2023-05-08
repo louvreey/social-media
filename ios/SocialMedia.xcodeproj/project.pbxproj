@@ -14,6 +14,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-SocialMedia-SocialMediaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-SocialMedia-SocialMediaTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		EFCD4760D6A94917A6256A71 /* GreatVibes-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8795ECE12EAC48BE81155D80 /* GreatVibes-Regular.otf */; };
+		99D649024E284000BE982427 /* StyleScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8915335252A94E98BABD49D3 /* StyleScript-Regular.ttf */; };
+		2EEC49C414C64F5FAB4A86C2 /* comicate.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F187FF0A68D485F82C84B87 /* comicate.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SocialMedia/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-SocialMedia-SocialMediaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialMedia-SocialMediaTests.release.xcconfig"; path = "Target Support Files/Pods-SocialMedia-SocialMediaTests/Pods-SocialMedia-SocialMediaTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		8795ECE12EAC48BE81155D80 /* GreatVibes-Regular.otf */ = {isa = PBXFileReference; name = "GreatVibes-Regular.otf"; path = "../assets/fonts/GreatVibes-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8915335252A94E98BABD49D3 /* StyleScript-Regular.ttf */ = {isa = PBXFileReference; name = "StyleScript-Regular.ttf"; path = "../assets/fonts/StyleScript-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F187FF0A68D485F82C84B87 /* comicate.ttf */ = {isa = PBXFileReference; name = "comicate.ttf"; path = "../assets/fonts/comicate.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				ED45537D33534DBE8108F776 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +154,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		ED45537D33534DBE8108F776 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				8795ECE12EAC48BE81155D80 /* GreatVibes-Regular.otf */,
+				8915335252A94E98BABD49D3 /* StyleScript-Regular.ttf */,
+				2F187FF0A68D485F82C84B87 /* comicate.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +262,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				EFCD4760D6A94917A6256A71 /* GreatVibes-Regular.otf in Resources */,
+				99D649024E284000BE982427 /* StyleScript-Regular.ttf in Resources */,
+				2EEC49C414C64F5FAB4A86C2 /* comicate.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

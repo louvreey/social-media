@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import Input from '../components/InputComponents';
 import { createProfile } from '../store/actions/profileAction';
+import { Icon } from 'react-native-elements';
 
 const RegisterScreen = (props) => {
   const { navigation } = props;
@@ -35,10 +36,11 @@ const RegisterScreen = (props) => {
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.mainContainer}>
+
         <View style={styles.inputContainer}>
-          <TextInput title="Username" placeholder="usernmae" onChangeText={(text) => onChangeInput('username', text)} />
-          <TextInput title="Email" placeholder="Email" onChangeText={(text) => onChangeInput('email', text)} />
-          <Input title="password" onChangeText={(text) => onChangeInput('password', text)} />
+          <Input title="username" isPassword={false} onChangeText={(text) => onChangeInput('username', text)} />
+          <Input title="email" isPassword={true} tonChangeText={(text) => onChangeInput('email', text)} />
+          <Input title="password" isPassword={true} onChangeText={(text) => onChangeInput('password', text)} />
         </View>
         <Button text="Register" onPress={() => sendData()} />
         <View style={styles.textContainer}>

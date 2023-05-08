@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import React from 'react';
 
 export const Input = props => {
-  const {title} = props;
+  const { title, isPassword } = props;
   return (
     <View style={styles.mainContainer}>
       <View style={styles.titleContainer}>
