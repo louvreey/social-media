@@ -1,29 +1,90 @@
-import { StyleSheet, Text, View, ScrollView, TextInput } from 'react-native';
-import React, { useEffect } from 'react';
+import {StyleSheet, Text, View, ScrollView, TextInput} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import Button from '../components/ButtonComponents';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useSelector } from 'react-redux';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useDispatch, useSelector} from 'react-redux';
 import Input from '../components/InputComponents';
+import {create} from 'react-test-renderer';
+import {createProfile} from '../store/actions/profileAction';
+import { Alert } from 'react-native';
 
-const RegisterScreen = (props) => {
-  const { navigation } = props;
-  const globalProfileData = useSelector(store => store.profileReducer)
+const RegisterScreen = props => {
+  const {navigation} = props;
+  const globalProfileData = useSelector(store => store.profileReducer);
+  const [form, setForm] = useState({username: '', email: '', password: ''});
+  const onChangeInput = (inputType, value) => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (inputType === 'email') {
+      if (!emailRegex.test(value)) {
+        setEmailFormat(false);
+      } else {
+        setEmailFormat(true);
+      }
+    }
+    setForm({
+      ...form,
+      [inputType]: value,
+    });
+  };
+  const [isEmailFormat, setEmailFormat] = useState(true);
+  const sendData = () => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (form.username === '' || form.email === '' || form.password === '' || !isEmailFormat) {
+      alert('Make sure you fill all the field with the right information!');
+    } 
+    else if (!emailRegex.test(form.email)) {
+      alert('Isi email!!');
+    } 
+    else {
+      useDispatch(createProfile(form));
+      Alert.alert(
+        "Success",
+        "Successfully create an account!",
+         [
+         {
+         text: "OK",
+         onPress: () => navigation.navigate('Login')
+         }
+         ]
+         );
+    }
+  };
   useEffect(() => {
-    console.log(globalProfileData)
-  }, [globalProfileData])
+    // console.log(form);
+    if (form.email === '') {
+      setEmailFormat(true);
+      }
+     }, [form.email]);
+  ;
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.mainContainer}>
         <View style={styles.inputContainer}>
-          <Input title="Username" />
-          <TextInput title="Email" placeholder="Email" />
-          <TextInput title="Password" placeholder="Password" />
+          <Input
+            title="Username"
+            onChangeText={text => onChangeInput('username', text)}
+          />
+          <Input
+            title="Email"
+            onChangeText={text => onChangeInput('email', text)}
+          />
+          {isEmailFormat ? null : (
+            <View style={styles.warningContainer}>
+              <Text style={styles.warning}>
+                Please input the right email format!
+              </Text>
+            </View>
+          )}
+          <Input
+            title="Password"
+            onChangeText={text => onChangeInput('password', text)}
+          />
         </View>
-        <Button text="Register" />
+        <Button text="Register" onPress={() => sendData()} />
         <View style={styles.textContainer}>
           <Text style={styles.text}>Already have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.loginText}>Login</Text>
+            <Text style={styles.loginText}> Login</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -56,5 +117,12 @@ const styles = StyleSheet.create({
   loginText: {
     color: '#1A5B0A',
     fontSize: 16,
+  },
+  warningContainer: {
+    marginBottom: 16,
+    marginLeft: 16,
+  },
+  warning: {
+    color: 'red',
   },
 });
