@@ -59,6 +59,7 @@ const RegisterScreen = props => {
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.mainContainer}>
+
         <View style={styles.inputContainer}>
           <Input
             title="Username"
