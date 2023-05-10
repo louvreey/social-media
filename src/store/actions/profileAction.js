@@ -1,6 +1,6 @@
 export const createProfile = (value) => {
     return {
-        type: 'CREATE PROFILE',
+        type: 'CREATE_PROFILE',
         payload: value
     }
 }
