@@ -50,7 +50,7 @@ const RegisterScreen = props => {
     }
   };
   useEffect(() => {
-    // console.log(form);
+    console.log(form);
     if (form.email === '') {
       setEmailFormat(true);
       }

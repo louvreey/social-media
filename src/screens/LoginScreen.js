@@ -9,6 +9,10 @@ import {
 import React from 'react';
 import Button from '../components/ButtonComponents';
 import Input from '../components/InputComponents';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../store/actions/profileAction';
+
+const dispatch = useDispatch();
 
 const LoginScreen = () => {
   return (

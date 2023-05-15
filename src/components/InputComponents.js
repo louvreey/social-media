@@ -1,8 +1,9 @@
-import {StyleSheet, Text, View, TextInput} from 'react-native';
+import {StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
+import { Icon } from 'react-native-elements';
 
 export const Input = props => {
-  const {title} = props;
+  const {title, isPassword, iconName} = props;
   return (
     <View style={styles.mainContainer}>
       <View style={styles.titleContainer}>
@@ -10,6 +11,16 @@ export const Input = props => {
       </View>
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} {...props} />
+        
+          {/* isPassword? 
+          <View style={styles.iconContainer}>
+            <TouchableOpacity {...props}>
+              <Icon
+              name='ionicon'
+              />
+            </TouchableOpacity>
+          </View> */}
+
       </View>
     </View>
   );
@@ -34,4 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: 'black',
   },
+  iconContainer: {
+    padding: 8,
+  }
 });
