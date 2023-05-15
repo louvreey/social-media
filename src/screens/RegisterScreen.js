@@ -38,7 +38,6 @@ const RegisterScreen = props => {
       alert('Isi email!!');
     }
     else {
-      console.log("success")
       dispatch(createProfile(form));
       console.log("form")
       console.log(form)

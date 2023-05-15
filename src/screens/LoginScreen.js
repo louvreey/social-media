@@ -9,7 +9,8 @@ import {
 import React, { useEffect, useState } from 'react';
 import Button from '../components/ButtonComponents';
 import Input from '../components/InputComponents';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../store/actions/profileAction';
 
 const LoginScreen = (props) => {
   const { navigation } = props
@@ -17,6 +18,7 @@ const LoginScreen = (props) => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
 
   useEffect(() => {
     console.log('global login')
@@ -27,8 +29,10 @@ const LoginScreen = (props) => {
     if (username === '' || password === '') {
       alert('Please input username and password')
     } else if ((username.toLowerCase() === globalProfileData.username.toLowerCase()) && (password.toLowerCase() === globalProfileData.password.toLowerCase())) {
-      alert('Success')
-    } else {
+      dispatch(loginUser(true))
+      navigation.navigate('Start')
+    }
+    else {
       alert('credential didnt match')
     }
 
