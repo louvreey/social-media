@@ -6,39 +6,41 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from '../components/ButtonComponents';
 import Input from '../components/InputComponents';
-import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../store/actions/profileAction';
+import {useDispatch, useSelector} from 'react-redux';
+import {loginUser} from '../store/actions/profileAction';
 
-const LoginScreen = (props) => {
-  const { navigation } = props
-  const globalProfileData = useSelector(store => store.profileReducer)
+const LoginScreen = props => {
+  const {navigation} = props;
+  const globalProfileData = useSelector(store => store.profileReducer);
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const dispatch = useDispatch()
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('global login')
-    console.log(globalProfileData)
-  }, [globalProfileData])
+    console.log('global login');
+    console.log(globalProfileData);
+  }, [globalProfileData]);
 
   const checkData = () => {
     if (username === '' || password === '') {
-      alert('Please input username and password')
-    } else if ((username.toLowerCase() === globalProfileData.username.toLowerCase()) && (password.toLowerCase() === globalProfileData.password.toLowerCase())) {
-      dispatch(loginUser(true))
-      navigation.navigate('Start')
-    }
-    else {
-      alert('credential didnt match')
+      alert('Please input username and password');
+    } else if (
+      username.toLowerCase() === globalProfileData.username.toLowerCase() &&
+      password.toLowerCase() === globalProfileData.password.toLowerCase()
+    ) {
+      dispatch(loginUser(true));
+      navigation.navigate('Start');
+    } else {
+      alert('credential didnt match');
     }
 
-    setUsername('')
-    setPassword('')
-  }
+    setUsername('');
+    setPassword('');
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.scroll}>
@@ -50,10 +52,20 @@ const LoginScreen = (props) => {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Input title="Username" placeholder="Username" onChangeText={(text) => setUsername(text)} value={username} />
+          <Input
+            title="Username"
+            placeholder="Username"
+            onChangeText={text => setUsername(text)}
+            value={username}
+          />
         </View>
         <View style={styles.inputContainer}>
-          <Input title="Password" placeholder="Password" onChangeText={(text) => setPassword(text)} value={password} />
+          <Input
+            title="Password"
+            placeholder="Password"
+            onChangeText={text => setPassword(text)}
+            value={password}
+          />
         </View>
         <Button text="Login" onPress={() => checkData()} />
         <View style={styles.textContainer}>
