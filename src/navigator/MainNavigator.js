@@ -83,7 +83,7 @@ const MainNavigator = () => {
           />
         </Stack.Navigator>
       ) : (
-        <Stack.Navigator initialRouteName="Register">
+        <Stack.Navigator initialRouteName="Profile">
           <Stack.Screen
             name="Login"
             component={LoginScreen}
@@ -94,6 +94,13 @@ const MainNavigator = () => {
           <Stack.Screen
             name="Register"
             component={RegisterScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
             options={{
               headerShown: false,
             }}
